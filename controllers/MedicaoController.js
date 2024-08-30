@@ -117,9 +117,29 @@
                 return res.status(400).json({msg:'Measure not found'})
             })
         }catch(err){
-            console.log(err)
+                console.log(err)
                 return res.status(400).json({msg:'Measure not found'})
         }
+    }
+
+    //Filtrando medidas dos clientes
+        export const listMeasure = async(req,res)=>{
+
+            if(!req.params){
+                return res.status(400).json({msg:'Measure not found'})
+            }
+
+            try{
+                await Measure.findAll({where:{customer_code:req.params.code,measure_type:req.params.m_type}}).then(measure=>{
+                    return res.status(200).json(measure)
+                }).catch(err=>{
+                    console.log(err)
+                    return res.status(400).json({msg:'Measure not found'})
+                })
+            }catch(err){
+                console.log(err)
+                return res.status(400).json({msg:'Measure not found'})
+            }
         }
 
     

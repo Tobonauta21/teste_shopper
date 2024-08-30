@@ -33,3 +33,14 @@
         <input type="submit" value="Confirmar" >
     </form>
 {{/if}}
+
+
+<h1>Confirme os dados</h1>
+    <form action="/confirm" method="get">
+        <input type="text" name="customer_code" placeholder="Customer Code">
+        <select name="measure_type">
+            <option value="WATER">Water</option>
+            <option value="GAS">Gas</option>
+        </select>
+        <input type="submit" value="Confirmar" >
+    </form>
