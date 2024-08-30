@@ -23,9 +23,13 @@
 {{#if dados}}
 <h1>Confirme os dados</h1>
     <form action="/confirm" method="post">
-        <input type="text" name="customer_code">
-        <input type="text" name="measure_date">
-        <input type="text" name="measure_code">
-        <input type="submit" value="Confirmar">
+        <input type="text" name="customer_code" value="{{dados.customer_code}}">
+        <input type="date" name="measure_date" value="{{dados.measure_date}}">
+        <input type="text" name="measure_code" value="{{dados.measure_code}}">
+        <select name="measure_type">
+            <option value="WATER">Water</option>
+            <option value="GAS">Gas</option>
+        </select>
+        <input type="submit" value="Confirmar" >
     </form>
 {{/if}}

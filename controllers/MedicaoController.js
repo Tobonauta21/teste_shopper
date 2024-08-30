@@ -56,7 +56,7 @@
             const novaMedida = await checkMeasure(dados.measure_date,dados.measure_code,dados.customer_code,dados.measure_type)
             console.log(dados)
             if(novaMedida){
-                res.send.status(409).json({msg:'Medida desse mês já feita'})
+                return res.status(409).json({msg:'Medida desse mês já feita'});
             }
 
             const imgDir = process.env.IMG_DIR
@@ -106,10 +106,10 @@
 
         try{
             await Measure.create({
-                cod_measure:dados.cod_measure,
+                cod_measure:dados.measure_code,
                 customer_code: dados.customer_code,
                 measure_type: dados.measure_type,
-                measure_date: dados.measure_date
+                measure_datetime: dados.measure_date
             }).then(()=>{
                 return res.status(200).json({success:'true'})
             }).catch((err)=>{
@@ -117,7 +117,8 @@
                 return res.status(400).json({msg:'Measure not found'})
             })
         }catch(err){
-
+            console.log(err)
+                return res.status(400).json({msg:'Measure not found'})
         }
         }
 

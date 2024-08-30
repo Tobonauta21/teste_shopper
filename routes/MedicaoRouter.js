@@ -10,5 +10,7 @@
     })
 
     router.post('/upload',Measure.makeRequest)
+    
+    router.post('/confirm',Measure.saveRequest)
 //Export
     export {router}
