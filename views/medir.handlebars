@@ -1,0 +1,31 @@
+<div class="errors">
+    <ul>
+    {{#each erros}}
+        <li>{{erros}}</li>
+    {{/each}}
+    </ul>
+</div>
+
+<div class="form">
+    <form action="/upload" method="post">
+        <input type="input" name="customer_code" placeholder="Customer Code">
+        <input type="file" name="image">
+        <input type="date" name="measure_date">
+        <input type="input" name="measure_code" placeholder="Previous Measure Code">
+        <select name="measure_type">
+            <option value="WATER">Water</option>
+            <option value="GAS">Gas</option>
+        </select>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+
+{{#if dados}}
+<h1>Confirme os dados</h1>
+    <form action="/confirm" method="post">
+        <input type="text" name="customer_code">
+        <input type="text" name="measure_date">
+        <input type="text" name="measure_code">
+        <input type="submit" value="Confirmar">
+    </form>
+{{/if}}
